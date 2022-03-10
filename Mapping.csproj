@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="ProjNet\CoordinateSystemSet.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ProjNet\OSTN02_NTv2.gsb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ProjNET">
+      <HintPath>..\..\Mapping\ProjNet\ProjNET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ProjNet\CoordinateSystemSet.json" />
+    <Resource Include="ProjNet\OSTN02_NTv2.gsb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ProjNet\ProjNET.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
