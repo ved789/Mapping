@@ -13,5 +13,5 @@ docker run -p 5700:80 --name mappingcontainer mappingapi:latest
 
 #6. Now run this in browser:
 
-http://localhost:5700/weatherforecast
+http://localhost:5700/coordinateconvert
 

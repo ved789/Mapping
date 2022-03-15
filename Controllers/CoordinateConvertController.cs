@@ -15,9 +15,9 @@ namespace Mapping.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<CoordinateConvertController> _logger;
 
-        public CoordinateConvertController(ILogger<WeatherForecastController> logger)
+        public CoordinateConvertController(ILogger<CoordinateConvertController> logger)
         {
             _logger = logger;
         }
