@@ -5,11 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Binaries\CoordinateSystemSet.json" />
     <Content Remove="ProjNet\CoordinateSystemSet.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Binaries\OSTN02_NTv2.gsb" />
     <None Remove="ProjNet\OSTN02_NTv2.gsb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Binaries\CoordinateSystemSet.json" />
+    <EmbeddedResource Include="Binaries\OSTN02_NTv2.gsb" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +37,21 @@
     <Resource Include="ProjNet\ProjNET.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

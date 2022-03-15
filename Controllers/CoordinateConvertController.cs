@@ -37,6 +37,22 @@ namespace Mapping.Controllers
                 .ToArray();
         }
 
+        [Produces("application/json")]
+        [HttpPost]
+        public Coordinate Post(Coordinate request)
+        {
+            CoordinateConverter converter = new CoordinateConverter(request.FromWkt);
+            double[] mapPoints = converter.ConvertToCoordSys(request.FromMapPoints,request.ToWkt);
+
+            return new Coordinate
+            {
+                FromMapPoints = request.FromMapPoints,
+                ToMapPoints = mapPoints,
+                FromWkt = request.FromWkt,
+                ToWkt = request.ToWkt
+            };
+        }
+
         private double[] GetRandomMapPoints()
         {
             var rng = new Random();

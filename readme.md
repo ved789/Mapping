@@ -15,3 +15,11 @@ docker run -p 5700:80 --name mappingcontainer mappingapi:latest
 
 http://localhost:5700/coordinateconvert
 
+#post request json sample:
+
+{
+    "fromMapPoints": [331534.552, 431920.792],
+    "toMapPoints": null,
+    "fromWkt": "mapinfo:coordsys 8,79,7,-2,49,0.9996012717,400000,-100000",
+    "toWkt": "mapinfo:coordsys 2001,104,-180,-90,180,90"
+}

@@ -9,6 +9,8 @@ namespace Mapping
     public class CoordinateConverter
     {
         #region PrivateMethods
+        //public const string MapInfoBritishNationalGrid = "mapinfo:coordsys 8,79,7,-2,49,0.9996012717,400000,-100000";
+        //public const string MapInfoWgs84 = "mapinfo:coordsys 2001,104,-180,-90,180,90";
         private readonly string srs;
         private readonly CoordinateSystemFactory coordinateSystemFactory = new CoordinateSystemFactory();
         private readonly CoordinateTransformationFactory coordinateTransformationFactory =

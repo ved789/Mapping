@@ -26,7 +26,7 @@ namespace Mapping
             Stream stream = null;
             try
             {
-                stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Mapping.CoordinateSystemSet.json");
+                stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Mapping.Binaries.CoordinateSystemSet.json");
                 if (stream == null)
                     return;
                 using (StreamReader reader = new StreamReader(stream))
@@ -43,7 +43,7 @@ namespace Mapping
 
         public static GridFile GetGridFile()
         {
-            return ostn02 ?? (ostn02 = GridFile.Open(Assembly.GetExecutingAssembly().GetManifestResourceStream("Mapping.OSTN02_NTv2.gsb"), true));
+            return ostn02 ?? (ostn02 = GridFile.Open(Assembly.GetExecutingAssembly().GetManifestResourceStream("Mapping.Binaries.OSTN02_NTv2.gsb"), true));
         }
 
         public static string GetWkt(string srsString)
