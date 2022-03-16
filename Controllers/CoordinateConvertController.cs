@@ -12,7 +12,7 @@ namespace Mapping.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "WGS84", "BNG", "EPSG2200", "EPSG2200", "EPSG2100", "EPSG2300", "EPSG2400", "EPSG2500", "EPSG2600", "EPSG2700"
+            "mapinfo:coordsys 8,79,7,-2,49,0.9996012717,400000,-100000", "mapinfo:coordsys 2001,104,-180,-90,180,90"
         };
 
         private readonly ILogger<CoordinateConvertController> _logger;
@@ -22,35 +22,39 @@ namespace Mapping.Controllers
             _logger = logger;
         }
 
+        [Produces("application/json")]
         [HttpGet]
         public IEnumerable<Coordinate> Get()
         {
             var rng = new Random();
 
-            return Enumerable.Range(1, 5).Select(index => new Coordinate
+            return Enumerable.Range(1, 2).Select(index => new Coordinate
             {
                 FromMapPoints = GetRandomMapPoints(),
                 ToMapPoints = GetRandomMapPoints(),
                 FromWkt = Summaries[rng.Next(Summaries.Length)],
                 ToWkt = Summaries[rng.Next(Summaries.Length)]
-            })
-                .ToArray();
+            }).ToArray();
         }
 
         [Produces("application/json")]
         [HttpPost]
-        public Coordinate Post(Coordinate request)
+        public IEnumerable<Coordinate> Post(IEnumerable<Coordinate> request)
         {
-            CoordinateConverter converter = new CoordinateConverter(request.FromWkt);
-            double[] mapPoints = converter.ConvertToCoordSys(request.FromMapPoints,request.ToWkt);
+            IList<Coordinate> response = new List<Coordinate>();
 
-            return new Coordinate
+            foreach (Coordinate coordinate in request)
             {
-                FromMapPoints = request.FromMapPoints,
-                ToMapPoints = mapPoints,
-                FromWkt = request.FromWkt,
-                ToWkt = request.ToWkt
-            };
+                response.Add(new Coordinate
+                {
+                    FromMapPoints = coordinate.FromMapPoints,
+                    ToMapPoints = new CoordinateConverter(coordinate.FromWkt).ConvertToCoordSys(coordinate.FromMapPoints, coordinate.ToWkt),
+                    FromWkt = coordinate.FromWkt,
+                    ToWkt = coordinate.ToWkt
+                });
+            }
+
+            return response;
         }
 
         private double[] GetRandomMapPoints()
