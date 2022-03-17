@@ -48,13 +48,14 @@ namespace Mapping
 
         public static string GetWkt(string srsString)
         {
+            srsString = srsString.Replace("mapinfo:", "");
             var result = cacheCoordinateSystemSet.Where(kvp => kvp.Key == srsString);
             if (result.Count() == 1)
             {
                 return result.First().Value;
             }
 
-            string wkt = coordinateSystemSet.Find(x => x.MiSrsId == srsString.Substring("mapinfo:".Length))?.Wkt;
+            string wkt = coordinateSystemSet.Find(x => x.MiSrsId == srsString)?.Wkt;
             if (cacheCoordinateSystemSet.Count < 2)
             {
                 cacheCoordinateSystemSet.Add(new KeyValuePair<string, string>(srsString, wkt));

@@ -20,8 +20,8 @@ http://localhost:5700/coordinateconvert
 [{
     "fromMapPoints": [331524.552, 431910.792],
     "toMapPoints": null,
-    "fromWkt": "mapinfo:coordsys 8,79,7,-2,49,0.9996012717,400000,-100000",
-    "toWkt": "mapinfo:coordsys 2001,104,-180,-90,180,90"
+    "fromWkt": "coordsys 8,79,7,-2,49,0.9996012717,400000,-100000",
+    "toWkt": "coordsys 2001,104,-180,-90,180,90"
 },
 {
     "fromMapPoints": [-3.0404548745705138, 53.77911026608691],
