@@ -15,7 +15,7 @@ docker run -p 5700:80 --name mappingcontainer mappingapi:latest
 
 http://localhost:5700/coordinateconvert
 
-#post request json sample:
+# post request json sample:
 
 [{
     "fromMapPoints": [331524.552, 431910.792],
@@ -29,3 +29,13 @@ http://localhost:5700/coordinateconvert
     "fromWkt": "mapinfo:coordsys 2001,104,-180,-90,180,90",
     "toWkt": "mapinfo:coordsys 8,79,7,-2,49,0.9996012717,400000,-100000"
 }]
+
+
+########################################################################
+# Steps to install Gdal:
+1. Add this path to the PATH environment system variable:
+	C:\Confirm\Branches\GIS\Mapping\GDAL
+2. Create three environment system variables:
+	i)  GDAL_DATA = C:\Confirm\Branches\GIS\Mapping\GDAL\gdal-data
+	ii) GDAL_DRIVER_PATH = C:\Confirm\Branches\GIS\Mapping\GDAL\gdalplugins\gdalplugins
+	iii) PROJ_LIB = C:\Confirm\Branches\GIS\Mapping\GDAL\projlib
